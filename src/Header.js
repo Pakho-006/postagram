@@ -1,11 +1,13 @@
 import React from 'react';
 import { css } from '@emotion/css';
 import { Link } from 'react-router-dom';
+import { Heading } from '@aws-amplify/ui-react';
 
 export default function Header() {
   return (
     <div className={headerContainer}>
-      <h1 className={headerStyle}>School Gallery</h1>
+      <Heading className={headingStyle}>School Gallery</Heading>
+      {/* <h1 className={headerStyle}>School Gallery</h1> */}
       <Link to="/" className={linkStyle}>All Posts</Link>
       <Link to="/myposts" className={linkStyle}>My Posts</Link>
     </div>
@@ -13,7 +15,13 @@ export default function Header() {
 }
 
 const headerContainer = css`
-  padding-top: 20px;
+  padding-top: 5px;
+`
+
+const headingStyle = css`
+  padding-bottom: 15px;
+  font-size: 2rem;
+  font-weight: bold;
 `
 
 const headerStyle = css`

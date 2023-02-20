@@ -6,17 +6,18 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import { withAuthenticator } from '@aws-amplify/ui-react';
+import { withAuthenticator, Heading, Button } from '@aws-amplify/ui-react';
 import { css } from '@emotion/css';
 import { API, Storage, Auth } from 'aws-amplify';
 import '@aws-amplify/ui-react/styles.css';
 import { listPosts } from './graphql/queries';
+import ControllableStates from './selectui'
 
 import Posts from './Posts';
 import Post from './Post';
 import Header from './Header';
 import CreatePost from './CreatePost';
-import Button from './Button';
+import Button1 from './Button';
 
 function Router({user, signOut}) {
 
@@ -58,11 +59,12 @@ function Router({user, signOut}) {
     <>
       <HashRouter>
           <div className={contentStyle}>
-          <h2>Hello {user.username},</h2>
+          <Heading level={4} className={heading_blue}>Hello {user.username},</Heading>
             <Header />
             
             <hr className={dividerStyle} />
-            <Button title="New Post" onClick={() => updateOverlayVisibility(true)} />
+            <ControllableStates></ControllableStates>
+            <div className={button1Style}><Button1 title="New Post" onClick={() => updateOverlayVisibility(true)} /></div>
             <Switch>
               <Route exact path="/" >
                 <Posts posts={posts} />
@@ -75,7 +77,7 @@ function Router({user, signOut}) {
               </Route>
             </Switch>
           </div>
-          <button onClick={signOut}>Sign out</button>
+          <Button variation="destructive" onClick={signOut}>Sign out</Button>
         </HashRouter>
         { showOverlay && (
           <CreatePost
@@ -92,9 +94,16 @@ const dividerStyle = css`
   margin-top: 15px;
 `
 
+const heading_blue = css`
+color: var(--amplify-colors-blue-80);
+`
+
 const contentStyle = css`
   min-height: calc(100vh - 45px);
   padding: 0px 40px;
+`
+const button1Style = css`
+  margin-bottom:20px;
 `
 
 export default withAuthenticator(Router);
