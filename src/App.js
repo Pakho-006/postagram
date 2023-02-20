@@ -58,7 +58,9 @@ function Router({user, signOut}) {
     <>
       <HashRouter>
           <div className={contentStyle}>
+          <h2>Hello {user.username},</h2>
             <Header />
+            
             <hr className={dividerStyle} />
             <Button title="New Post" onClick={() => updateOverlayVisibility(true)} />
             <Switch>

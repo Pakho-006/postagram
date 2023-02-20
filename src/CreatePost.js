@@ -11,6 +11,8 @@ import { createPost } from './graphql/mutations';
 const initialState = {
   name: '',
   description: '',
+  metadata1:'',
+  metadata2:'',
   image: {},
   file: '',
   location: '',
@@ -88,6 +90,18 @@ export default function CreatePost({
         className={inputStyle}
         onChange={onChangeText}
       />
+      <input
+        placeholder="meta-data1"
+        name="metadata1"
+        className={inputStyle}
+        onChange={onChangeText}
+      />
+      <input
+        placeholder="meta-data2"
+        name="metadata2"
+        className={inputStyle}
+        onChange={onChangeText}
+      />
       <input 
         type="file"
         onChange={onChangeFile}
@@ -119,12 +133,12 @@ const containerStyle = css`
   display: flex;
   flex-direction: column;
   width: 400px;
-  height: 420px;
+  height: 550px;
   position: fixed;
   left: 0;
   border-radius: 4px;
   top: 0;
-  margin-left: calc(50vw - 220px);
+  margin-left: calc(50vw - 200px);
   margin-top: calc(50vh - 230px);
   background-color: white;
   border: 1px solid #ddd;
