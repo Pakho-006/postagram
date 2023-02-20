@@ -48,11 +48,11 @@ export default function CreatePost({
   /* 4. Save the post  */
   async function save() {
     try {
-      const { name, description, location, image } = formState;
+      const { name, description, metadata1, metadata2, location, image } = formState;
       if (!name || !description || !location || !image.name) return;
       updateFormState(currentState => ({ ...currentState, saving: true }));
       const postId = uuid();
-      const postInfo = { name, description, location, image: formState.image.name, id: postId };
+      const postInfo = { name, description, metadata1, metadata2, location, image: formState.image.name, id: postId };
   
       await Storage.put(formState.image.name, formState.image.fileInfo);
       await API.graphql({
