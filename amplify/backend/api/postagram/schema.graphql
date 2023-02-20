@@ -13,11 +13,8 @@ type Post
   name: String!
   location: String!
   description: String!
-  metadata1: String!
-  metadata2: String!
   image: String
   owner: String
-  comments: [Comment] @connection
 }
 
 type Comment

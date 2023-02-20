@@ -11,8 +11,6 @@ import { createPost } from './graphql/mutations';
 const initialState = {
   name: '',
   description: '',
-  metadata1:'',
-  metadata2:'',
   image: {},
   file: '',
   location: '',
@@ -48,11 +46,11 @@ export default function CreatePost({
   /* 4. Save the post  */
   async function save() {
     try {
-      const { name, description, metadata1, metadata2, location, image } = formState;
+      const { name, description, location, image } = formState;
       if (!name || !description || !location || !image.name) return;
       updateFormState(currentState => ({ ...currentState, saving: true }));
       const postId = uuid();
-      const postInfo = { name, description, metadata1, metadata2, location, image: formState.image.name, id: postId };
+      const postInfo = { name, description, location, image: formState.image.name, id: postId };
   
       await Storage.put(formState.image.name, formState.image.fileInfo);
       await API.graphql({
@@ -87,18 +85,6 @@ export default function CreatePost({
       <input
         placeholder="Description"
         name="description"
-        className={inputStyle}
-        onChange={onChangeText}
-      />
-      <input
-        placeholder="meta-data1"
-        name="metadata1"
-        className={inputStyle}
-        onChange={onChangeText}
-      />
-      <input
-        placeholder="meta-data2"
-        name="metadata2"
         className={inputStyle}
         onChange={onChangeText}
       />

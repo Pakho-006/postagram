@@ -35,8 +35,8 @@ export default function Post() {
       <h1 className={titleStyle}>Title: {post.name}</h1>
       <h3 className={locationStyle}>Location: {post.location}</h3>
       <p>Description:{post.description}</p>
-      <p>Meta-data1:{post.metadata1}</p>
-      <p>Meta-data2:{post.metadata2}</p>
+      {/* <p>Meta-data1:{post.metadata1}</p>
+      <p>Meta-data2:{post.metadata2}</p> */}
       <img alt="post" src={post.image} className={imageStyle} />
     </>
   )
